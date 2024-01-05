@@ -29,9 +29,8 @@ const addContact = (req, res) => {
    }
    contacts.push(addContact)
 
-   //TO SAMO
-   updateContactsData(contacts)
 
+   updateContactsData(contacts)
    return res.status(201).json({ addContact })
 }
 
@@ -44,9 +43,8 @@ const removeContact = (req, res) => {
    const delatedContactIndex = contacts.findIndex((item) => item.id === contact.id)
    contacts.splice(delatedContactIndex, 1)
 
-   //TO SAMO
-   updateContactsData(contacts)
 
+   updateContactsData(contacts)
    return res.status(200).json({ message: "contact deleted" })
 }
 
@@ -75,10 +73,8 @@ const updateContact = (req, res) => {
       }
    })
 
-   //TO SAMO
+
    updateContactsData(contacts)
-
-
    return res.status(200).json({ contacts })
 }
 

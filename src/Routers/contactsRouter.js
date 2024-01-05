@@ -9,17 +9,16 @@ const {
    updateContact
 } = require("../Controllers/contactControllers")
 
-
+const {
+   addPostValidation,
+   addPutValidation
+} = require("../Middlewares/validationMiddleware")
 
 router.get("/", listContacts)
-
 router.get("/:id", getById)
-
-router.post("/", addContact)
-
+router.post("/", addPostValidation, addContact)
 router.delete("/:id", removeContact)
-
-router.put("/:id", updateContact)
+router.put("/:id", addPutValidation, updateContact)
 
 
 
