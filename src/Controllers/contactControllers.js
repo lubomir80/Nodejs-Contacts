@@ -1,4 +1,6 @@
 const fs = require("fs");
+
+
 const contacts = JSON.parse(fs.readFileSync("Data/contacts.json", "utf8"));
 
 function updateContactsData(contacts) {
