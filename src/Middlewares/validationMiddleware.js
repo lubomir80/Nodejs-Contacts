@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 
+
 const addPostValidation = (req, res, next) => {
    const schema = Joi.object({
       name: Joi.string()
@@ -49,9 +50,7 @@ const addPutValidation = (req, res, next) => {
    next();
 }
 
-
-
 module.exports = {
    addPostValidation,
-   addPutValidation
+   addPutValidation,
 }

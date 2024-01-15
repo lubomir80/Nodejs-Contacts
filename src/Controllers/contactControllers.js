@@ -3,7 +3,8 @@ const {
    getContactById,
    addContact,
    changeContactById,
-   deleteContactById
+   deleteContactById,
+   updateStatusContactById
 } = require("../Services/contactService")
 
 
@@ -43,6 +44,15 @@ const removeContactController = async (req, res) => {
    return res.status(200).json({ status: "success", message: `contact ${id} has been deleted` })
 }
 
+const updateStatusContactController = async (req, res) => {
+   const { id } = req.params;
+   const { favorite } = req.body;
+   // await updateStatusContactById(id, favorite);
+   // return res.status(200).json({ status: "success" })
+
+   await updateStatusContactById(id, favorite);
+   return res.status(200).json({ status: "success" })
+}
 
 
 module.exports = {
@@ -50,5 +60,6 @@ module.exports = {
    getByIdController,
    addContactController,
    removeContactController,
-   updateContactController
+   updateContactController,
+   updateStatusContactController
 }

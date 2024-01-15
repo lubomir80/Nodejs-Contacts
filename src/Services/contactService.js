@@ -1,4 +1,5 @@
 const { Contact } = require("../db/contactModel")
+const { WrongParamError, WrongFavoriteParamError } = require("../helpers/errors")
 
 const getContacts = async () => {
    const contacts = await Contact.find()
@@ -7,7 +8,7 @@ const getContacts = async () => {
 
 const getContactById = async (id) => {
    const contact = await Contact.findById(id);
-   if (!contact) res.status(404).json({ status: `Not found ${id}` })
+   if (!contact) throw new WrongParamError(`Not found ${id}`);
    return contact
 }
 
@@ -26,10 +27,17 @@ const deleteContactById = async (id) => {
    await Contact.findByIdAndDelete(id);
 }
 
+const updateStatusContactById = async (id, favorite) => {
+   const contact = await Contact.findById(id);
+   if (!contact) throw new WrongFavoriteParamError(`Not found ${id}`);
+   await Contact.findByIdAndUpdate(id, { $set: { favorite } })
+}
+
 module.exports = {
    getContacts,
    getContactById,
    addContact,
    changeContactById,
-   deleteContactById
+   deleteContactById,
+   updateStatusContactById
 }
