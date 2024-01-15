@@ -47,9 +47,6 @@ const removeContactController = async (req, res) => {
 const updateStatusContactController = async (req, res) => {
    const { id } = req.params;
    const { favorite } = req.body;
-   // await updateStatusContactById(id, favorite);
-   // return res.status(200).json({ status: "success" })
-
    await updateStatusContactById(id, favorite);
    return res.status(200).json({ status: "success" })
 }

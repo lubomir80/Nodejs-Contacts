@@ -13,8 +13,8 @@ const getContactById = async (id) => {
 }
 
 const addContact = async ({ name, email, phone }) => {
-   const post = new Contact({ name, email, phone });
-   await post.save();
+   const contact = new Contact({ name, email, phone });
+   await contact.save();
 }
 
 const changeContactById = async (id, { name, phone, email }) => {
@@ -28,8 +28,6 @@ const deleteContactById = async (id) => {
 }
 
 const updateStatusContactById = async (id, favorite) => {
-   const contact = await Contact.findById(id);
-   if (!contact) throw new WrongFavoriteParamError(`Not found ${id}`);
    await Contact.findByIdAndUpdate(id, { $set: { favorite } })
 }
 
